@@ -25,6 +25,7 @@
     maxTags: undefined,
     maxChars: undefined,
     confirmKeys: [13, 44],
+    moveInput: true,
     delimiter: ',',
     delimiterRegex: null,
     cancelConfirmKeysOnEmpty: false,
@@ -428,7 +429,7 @@
           case 37:
             // Try to move the input before the previous tag
             var $prevTag = $inputWrapper.prev();
-            if ($input.val().length === 0 && $prevTag[0]) {
+            if (this.options.moveInput && $input.val().length === 0 && $prevTag[0]) {
               $prevTag.before($inputWrapper);
               $input.focus();
             }
@@ -437,7 +438,7 @@
           case 39:
             // Try to move the input after the next tag
             var $nextTag = $inputWrapper.next();
-            if ($input.val().length === 0 && $nextTag[0]) {
+            if (this.options.moveInput && $input.val().length === 0 && $nextTag[0]) {
               $nextTag.after($inputWrapper);
               $input.focus();
             }
